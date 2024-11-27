@@ -1,0 +1,75 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DSWeatherApp.Models"
+             x:Class="DSWeatherApp.Pages.CurrentPage">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+            <SearchBar Placeholder="Enter city name" 
+                       Text="{Binding SearchQuery}" />
+
+            <CollectionView ItemsSource="{Binding Cities}" 
+                            SelectionMode="Single" 
+                            SelectedItem="{Binding SelectedCity}"
+                             SelectionChangedCommand="{Binding ClearCitiesCommand}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Label Text="{Binding Name}" 
+                                   FontSize="16" />
+                            <Label Text="{Binding Country}" 
+                                   FontSize="14" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+            <Frame Padding="10" BackgroundColor="LightBlue" CornerRadius="10">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Label Text="{Binding CurrentWeather.CityName}" 
+                           FontSize="16" 
+                           Grid.Row="1" 
+                           Grid.Column="1" />
+                    <Image Source="{Binding CurrentWeather.Icon}" 
+                           HeightRequest="100" 
+                           WidthRequest="100" 
+                           Grid.RowSpan="2" />
+                    <Label Text="{Binding CurrentWeather.Temperature, StringFormat='{0:0}°C'}" 
+                           FontSize="24" 
+                           Grid.Column="1" />
+                </Grid>
+            </Frame>
+
+            <Label Text="Hourly Forecast" 
+                   FontSize="18" 
+                   FontAttributes="Bold" />
+
+            <CollectionView ItemsSource="{Binding HourlyForecast}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding Hour}" 
+                                       FontSize="16" />
+                                <Image Source="{Binding Icon}" 
+                                       HeightRequest="40" 
+                                       WidthRequest="40" />
+                                <Label Text="{Binding Temperature}" 
+                                       FontSize="16" />
+                            </HorizontalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
