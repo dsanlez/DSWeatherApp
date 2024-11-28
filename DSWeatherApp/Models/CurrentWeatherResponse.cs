@@ -13,6 +13,8 @@ namespace DSWeatherApp.Models
         public string? Icon => Weather?.FirstOrDefault()?.icon;
         public double? Temperature => Main?.Temp;
 
-        public string CityName { get; set; }
+        public string? CityName { get; set; }
+        public Wind? wind { get; set; }
+        public Rain? rain { get; set; }
     }
 }

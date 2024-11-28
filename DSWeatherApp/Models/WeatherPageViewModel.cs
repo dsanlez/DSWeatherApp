@@ -1,10 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using DSWeatherApp.Pages;
+using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+
 
 namespace DSWeatherApp.Models
 {
@@ -21,9 +23,11 @@ namespace DSWeatherApp.Models
 
         private ObservableCollection<HourlyWeather> _hourlyForecast = new();
 
-        public ObservableCollection<DailyForecast> Forecasts { get; } = new();
+        public ObservableCollection<DailyWeather> DailyForecast { get; } = new();
 
         public ObservableCollection<City> Cities { get; } = new();
+
+        public ICommand NavigateToDetailsCommand { get; }
 
         private string? _searchQuery;
 
@@ -42,6 +46,8 @@ namespace DSWeatherApp.Models
         {
             Cities.Clear();
         });
+
+
 
         private City? _selectedCity;
         public City? SelectedCity
@@ -89,6 +95,18 @@ namespace DSWeatherApp.Models
             {
                 BaseAddress = new Uri(_baseApiUrl)
             };
+
+            NavigateToDetailsCommand = new Command(async () =>
+            {
+                if (CurrentWeather != null)
+                {
+                    var detailsPage = new CurrentWeatherDetailsPage
+                    {
+                        BindingContext = new { CurrentWeather = CurrentWeather }
+                    };
+                    await Shell.Current.Navigation.PushAsync(detailsPage);
+                }
+            });
         }
 
         private async Task SearchCitiesAsync(string query)
@@ -133,10 +151,12 @@ namespace DSWeatherApp.Models
                     $"/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={_apiKey}&units=metric");
 
                 var dailyForecastTask = _httpClient.GetStringAsync(
-                    $"/data/2.5/forecast/daily?lat={latitude}&lon={longitude}&cnt=7&appid={_apiKey}&units=metric");
+                $"/data/2.5/forecast?lat={latitude}&lon={longitude}&appid={_apiKey}&units=metric");
+
 
                 await Task.WhenAll(currentWeatherTask, hourlyWeatherTask, dailyForecastTask);
-
+                
+                #region Current Weather
                 CurrentWeather = JsonConvert.DeserializeObject<CurrentWeatherResponse>(
                     await currentWeatherTask);
 
@@ -146,6 +166,9 @@ namespace DSWeatherApp.Models
                     OnPropertyChanged(nameof(CurrentWeather));
                 }
 
+                #endregion
+
+                #region Hourly Forecast
                 var hourlyWeather = JsonConvert.DeserializeObject<HourlyWeatherResponse>(
                 await hourlyWeatherTask);
 
@@ -169,23 +192,32 @@ namespace DSWeatherApp.Models
                             });
                         }
                     });
+                #endregion
 
-                var dailyForecastResponse = JsonConvert.DeserializeObject<DailyForecastResponse>(
+                #region Daily Forecast
+                var forecastData = JsonConvert.DeserializeObject<HourlyWeatherResponse>(
                 await dailyForecastTask);
 
-                Forecasts.Clear();
-                dailyForecastResponse?.list?.ForEach(forecast =>
+                DailyForecast.Clear();
+
+                if (forecastData?.List != null)
                 {
-                    if (forecast.weather != null && forecast.weather.Any())
-                    {
-                        Forecasts.Add(new DailyForecast
+                    var dailyGrouped = forecastData.List
+                        .GroupBy(item => item.DtTxt?.Substring(0, 10))
+                        .Select(group => new DailyWeather
                         {
-                            dt = forecast.dt,
-                            temp = forecast.temp,
-                            weather = forecast.weather,
-                        });
+                            Date = DateTime.Parse(group.Key).ToString("dd/MM"),
+                            Temperature = $"{Math.Round(group.Average(item => item.Main.Temp))}°C",
+                            Icon = $"https://openweathermap.org/img/wn/{group.First().Weather.First().icon}.png"
+                        })
+                        .ToList();
+
+                    foreach (var day in dailyGrouped)
+                    {
+                        DailyForecast.Add(day);
                     }
-                });
+                }
+                #endregion
             }
             catch (Exception ex)
             {
@@ -207,8 +239,8 @@ namespace DSWeatherApp.Models
             OnPropertyChanged(propertyName);
             return true;
         }
+
+       
+
     }
-
-
-
 }

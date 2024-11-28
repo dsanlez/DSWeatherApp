@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace DSWeatherApp.Models
 {
-    public class DailyForecastResponse
+    public class DailyWeather
     {
-        public List<DailyForecast> list { get; set; }
+        public string? Date { get; set; }
+        public string? Temperature { get; set; }
+        public string? Icon { get; set; }
     }
 }

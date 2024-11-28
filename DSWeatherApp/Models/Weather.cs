@@ -8,7 +8,7 @@ namespace DSWeatherApp.Models
 {
     public class Weather
     {
-        public string? main { get; set; }
+        public string? Main { get; set; }
         public string? Description { get; set; }
         public string? icon { get; set; }
         

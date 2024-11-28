@@ -6,14 +6,12 @@ namespace DSWeatherApp
 {
     public partial class AppShell : Shell
     {
-        
 
         public AppShell()
         {
             InitializeComponent();
             
             ConfigureShell();
-            
         }
 
         private void ConfigureShell()

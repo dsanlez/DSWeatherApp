@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:DSWeatherApp.Models"
              x:Class="DSWeatherApp.Pages.ForecastPage"
              Title="Forecast Weather">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
             <SearchBar Placeholder="Enter city name" 
-                       Text="{Binding SearchQuery}" />
+                       Text="{Binding SearchQuery}"/>
 
             <CollectionView ItemsSource="{Binding Cities}" 
                             SelectionMode="Single" 
                             SelectedItem="{Binding SelectedCity}"
-                             SelectionChangedCommand="{Binding ClearCitiesCommand}">
+                            SelectionChangedCommand="{Binding ClearCitiesCommand}">
+
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <StackLayout>
+                        <StackLayout Padding="5">
                             <Label Text="{Binding Name}" 
                                    FontSize="16" />
                             <Label Text="{Binding Country}" 
-                                   FontSize="14" />
+                                   FontSize="14" 
+                                   TextColor="Gray" />
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
 
-            <ListView ItemsSource="{Binding Forecasts}">
-                <ListView.ItemTemplate>
+            <CollectionView ItemsSource="{Binding DailyForecast}">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Image Source="{Binding Weather[0].Icon}" WidthRequest="50" HeightRequest="50" />
-                                <Label Text="{Binding Dt, StringFormat='{0:dddd, MMM dd}'}" />
-                                <Label Text="{Binding Temp.day, StringFormat='{0}°C'}" />
-                            </StackLayout>
-                        </ViewCell>
+                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
+                            <HorizontalStackLayout Spacing="10">
+                                <Label Text="{Binding Date}" FontSize="Medium" />
+                                <Label Text="{Binding Temperature}" FontSize="Large" />
+                                <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50" />
+                            </HorizontalStackLayout>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>
