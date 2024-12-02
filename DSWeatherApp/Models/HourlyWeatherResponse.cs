@@ -10,6 +10,8 @@ namespace DSWeatherApp.Models
     public class HourlyWeatherResponse
     {
         [JsonProperty("list")]
-        public List<HourlyWeatherItem>? List { get; set; }
+        //public List<HourlyWeatherItem>? List { get; set; }
+
+        public List<HourlyWeather>? List { get; set; }
     }
 }

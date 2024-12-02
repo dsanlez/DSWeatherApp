@@ -3,7 +3,6 @@ using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
@@ -29,6 +28,8 @@ namespace DSWeatherApp.Models
 
         public ICommand NavigateToDetailsCommand { get; }
 
+        public ICommand NavigateToHourlyDetailsCommand { get; }
+
         private string? _searchQuery;
 
         public CurrentWeatherResponse? CurrentWeather
@@ -46,8 +47,6 @@ namespace DSWeatherApp.Models
         {
             Cities.Clear();
         });
-
-
 
         private City? _selectedCity;
         public City? SelectedCity
@@ -107,6 +106,18 @@ namespace DSWeatherApp.Models
                     await Shell.Current.Navigation.PushAsync(detailsPage);
                 }
             });
+
+            NavigateToHourlyDetailsCommand = new Command<HourlyWeather>(async (hourlyItem) =>
+            {
+                if (hourlyItem != null)
+                {
+                    var detailsPage = new HourlyForecastDetailsPage
+                    {
+                        BindingContext = hourlyItem
+                    };
+                    await Shell.Current.Navigation.PushAsync(detailsPage);
+                }
+            });
         }
 
         private async Task SearchCitiesAsync(string query)
@@ -155,7 +166,7 @@ namespace DSWeatherApp.Models
 
 
                 await Task.WhenAll(currentWeatherTask, hourlyWeatherTask, dailyForecastTask);
-                
+
                 #region Current Weather
                 CurrentWeather = JsonConvert.DeserializeObject<CurrentWeatherResponse>(
                     await currentWeatherTask);
@@ -188,7 +199,10 @@ namespace DSWeatherApp.Models
                                     : string.Empty,
                                 Temperature = item.Main != null
                                     ? $"{Math.Round(item.Main.Temp)}°C"
-                                    : string.Empty
+                                    : string.Empty,
+                                Main = item.Main,
+                                Wind = item.Wind,
+                                Rain = item.Rain
                             });
                         }
                     });
@@ -239,8 +253,5 @@ namespace DSWeatherApp.Models
             OnPropertyChanged(propertyName);
             return true;
         }
-
-       
-
     }
 }
