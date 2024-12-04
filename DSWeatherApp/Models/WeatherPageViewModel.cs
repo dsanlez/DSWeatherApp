@@ -27,7 +27,7 @@ namespace DSWeatherApp.Models
         public ObservableCollection<City> Cities { get; } = new();
 
         public ICommand NavigateToDetailsCommand { get; }
-
+        public ICommand NavigateToDailyForecastDetailsCommand { get; }
         public ICommand NavigateToHourlyDetailsCommand { get; }
 
         private string? _searchQuery;
@@ -123,6 +123,18 @@ namespace DSWeatherApp.Models
                         BindingContext = hourlyItem
                     };
                     await Shell.Current.Navigation.PushAsync(detailsPage);
+                }
+            });
+
+            NavigateToDailyForecastDetailsCommand = new Command<DailyWeather>(async (dailyForecastItem) =>
+            {
+                if (dailyForecastItem != null)
+                {
+                    var forecastDetailsPage = new ForecastDetailsPage
+                    {
+                        BindingContext = dailyForecastItem
+                    };
+                    await Shell.Current.Navigation.PushAsync(forecastDetailsPage);
                 }
             });
         }
@@ -231,7 +243,10 @@ namespace DSWeatherApp.Models
                         {
                             Date = DateTime.Parse(group.Key).ToString("dd/MM"),
                             Temperature = $"{Math.Round(group.Average(item => item.Main.Temp))}°C",
-                            Icon = $"https://openweathermap.org/img/wn/{group.First().Weather.First().icon}.png"
+                            Icon = $"https://openweathermap.org/img/wn/{group.First().Weather.First().icon}.png",
+                            Main = group.First().Main,
+                            Wind = group.First().Wind,
+                            Rain = group.First().Rain
                         })
                         .ToList();
 

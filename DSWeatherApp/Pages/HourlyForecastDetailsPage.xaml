@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.HourlyForecastDetailsPage"
-             Title="Hourly Forecast Details">
+             Title="{x:Static local2:AppResources.HourlyForecastDetails}">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
             <ActivityIndicator IsRunning="{Binding IsLoading}" 
