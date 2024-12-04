@@ -9,5 +9,17 @@ public partial class CurrentPage : ContentPage
 	{
 		InitializeComponent();
         BindingContext = new WeatherPageViewModel();
+
+        // Subscribe to language change notifications
+        MessagingCenter.Subscribe<SettingsPage>(this, "LanguageChanged", (sender) =>
+        {
+            RefreshPage();
+        });
     }
+
+    private void RefreshPage()
+    {
+        InitializeComponent();
+    }
+
 }

@@ -1,9 +1,14 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.HourlyForecastDetailsPage"
              Title="Hourly Forecast Details">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                    IsVisible="{Binding IsLoading}" 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand" />
             <Frame BackgroundColor="LightBlue" CornerRadius="10">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -35,28 +40,28 @@
 
             <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
 
-                <Label Text="Min Temperature" Grid.Row="1" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.MinTemperature}" Grid.Row="1" Grid.Column="0"/>
                 <Label Text="{Binding Main.TempMin, StringFormat='{0:0}°C'}" 
                        Grid.Row="1" 
                        Grid.Column="1"/>
 
-                <Label Text="Max Temperature" Grid.Row="2" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.MaxTemperature}" Grid.Row="2" Grid.Column="0"/>
                 <Label Text="{Binding Main.TempMax, StringFormat='{0:0}°C'}" 
                        Grid.Row="2" 
                        Grid.Column="1"/>
 
-                <Label Text="Humidity" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.Humidity}" Grid.Row="3" Grid.Column="0"/>
                 <Label Text="{Binding Main.Humidity, StringFormat='{0}%'}" 
                        Grid.Row="3" 
                        Grid.Column="1"/>
 
-                <Label Text="Wind Speed" Grid.Row="4" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.WindSpeed}" Grid.Row="4" Grid.Column="0"/>
                 <Label Text="{Binding Wind.speed, StringFormat='{0} m/s'}" 
                        Grid.Row="4" 
                        Grid.Column="1"/>
-                
-                <Label Text="Rain (1h)" Grid.Row="5" Grid.Column="0"/>
-                <Label Text="{Binding Rain.rain?._1h, StringFormat='{0:0.##} mm', FallbackValue='No Rain'}"
+
+                <Label Text="{x:Static local2:AppResources.Rain}" Grid.Row="5" Grid.Column="0"/>
+                <Label Text="{Binding Rain.rain?._1h, StringFormat='{0:0.##} mm', FallbackValue={x:Static local2:AppResources.NoRainFallback}}"
                        Grid.Row="5" 
                        Grid.Column="1"/>
             </Grid>

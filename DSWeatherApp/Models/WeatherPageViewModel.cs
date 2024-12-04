@@ -48,6 +48,13 @@ namespace DSWeatherApp.Models
             Cities.Clear();
         });
 
+        private bool _isLoading;
+        public bool IsLoading
+        {
+            get => _isLoading;
+            set => SetProperty(ref _isLoading, value);
+        }
+
         private City? _selectedCity;
         public City? SelectedCity
         {
@@ -153,6 +160,8 @@ namespace DSWeatherApp.Models
             if (latitude == 0 && longitude == 0)
                 return;
 
+            IsLoading = true;
+
             try
             {
                 var currentWeatherTask = _httpClient.GetStringAsync(
@@ -237,6 +246,10 @@ namespace DSWeatherApp.Models
             {
                 Debug.WriteLine($"Weather data error: {ex.Message}");
             }
+            finally
+            {
+                IsLoading = false;
+            }
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
@@ -252,6 +265,40 @@ namespace DSWeatherApp.Models
             backingStore = value;
             OnPropertyChanged(propertyName);
             return true;
+        }
+
+        public async Task GetLocation()
+        {
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Best);
+                var location = await Geolocation.GetLocationAsync(request);
+
+                if (location != null)
+                {
+                    var latitude = location.Latitude;
+                    var longitude = location.Longitude;
+
+                    await SearchWeather(latitude, longitude);
+                }
+                else
+                {
+                    Debug.WriteLine("Location not found.");
+                }
+            }
+            catch (FeatureNotSupportedException fnsEx)
+            {
+
+                Debug.WriteLine(fnsEx.Message);
+            }
+            catch (PermissionException pEx)
+            {
+                Debug.WriteLine(pEx.Message);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
         }
     }
 }

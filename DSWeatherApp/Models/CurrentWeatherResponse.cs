@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,5 +17,8 @@ namespace DSWeatherApp.Models
         public string? CityName { get; set; }
         public Wind? wind { get; set; }
         public Rain? rain { get; set; }
+
+        [JsonProperty("name")]
+        public string? Name { get; set; }
     }
 }

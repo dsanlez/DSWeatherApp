@@ -19,6 +19,7 @@ namespace DSWeatherApp
             var homePage = new HomePage();
             var currentPage = new CurrentPage();
             var forecastPage = new ForecastPage();
+            var settingsPage = new SettingsPage();
             var aboutPage = new AboutPage();
 
             Items.Add(new TabBar
@@ -28,7 +29,8 @@ namespace DSWeatherApp
                     new ShellContent {Title = "Home", Icon = "home", Content = homePage},
                     new ShellContent {Title = "Current Weather", Icon = "cloudy", Content = currentPage},
                     new ShellContent {Title = "Forecast Weather", Icon = "cloudy", Content = forecastPage},
-                    new ShellContent {Title = "About", Icon = "heart", Content = aboutPage},
+                    new ShellContent {Title = "Settings", Icon = "settings", Content = settingsPage},
+                    new ShellContent {Title = "About", Icon = "about", Content = aboutPage},
                 }
             });
         }

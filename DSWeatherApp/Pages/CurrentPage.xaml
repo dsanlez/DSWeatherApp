@@ -1,14 +1,21 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:DSWeatherApp.Models"
-              xmlns:local="clr-namespace:DSWeatherApp.Models"
+             xmlns:local="clr-namespace:DSWeatherApp.Models"
+             xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.CurrentPage"
-             Title="Current Weather">
+             Title="{x:Static local2:AppResources.CurrentWeather}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
-            <SearchBar Placeholder="Enter city name" 
-                       Text="{Binding SearchQuery}" />
+            
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                               IsVisible="{Binding IsLoading}" 
+                               VerticalOptions="CenterAndExpand"
+                               HorizontalOptions="CenterAndExpand" />
+            
+            <SearchBar Placeholder="{x:Static local2:AppResources.Entercityname}"
+            Text="{Binding SearchQuery}" />
 
             <CollectionView ItemsSource="{Binding Cities}" 
                             SelectionMode="Single" 
@@ -68,7 +75,7 @@
                 </Grid>
             </Frame>
 
-            <Label Text="Hourly Forecast" 
+            <Label Text="{x:Static local2:AppResources.HourlyForecast}" 
                    FontSize="18" 
                    FontAttributes="Bold" />
 

@@ -2,12 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:DSWeatherApp.Models"
+             xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.ForecastPage"
-             Title="Forecast Weather">
+             Title="Daily Forecast Weather">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
-            <SearchBar Placeholder="Enter city name" 
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                    IsVisible="{Binding IsLoading}" 
+                    VerticalOptions="CenterAndExpand"
+                    HorizontalOptions="CenterAndExpand" />
+
+            <SearchBar Placeholder="{x:Static local2:AppResources.Entercityname}" 
                        Text="{Binding SearchQuery}"/>
 
             <CollectionView ItemsSource="{Binding Cities}" 
