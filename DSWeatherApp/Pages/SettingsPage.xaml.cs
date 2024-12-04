@@ -7,6 +7,10 @@ public partial class SettingsPage : ContentPage
 	public SettingsPage()
 	{
 		InitializeComponent();
+
+        bool isDarkMode = Preferences.Get("IsDarkMode", false);
+        Application.Current.UserAppTheme = isDarkMode ? AppTheme.Dark : AppTheme.Light;
+        ThemeSwitch.IsToggled = isDarkMode;
     }
 
     private void Picker_SelectedIndexChanged(object sender, EventArgs e)
@@ -35,6 +39,15 @@ public partial class SettingsPage : ContentPage
 
     private void ThemeSwitch_Toggled(object sender, ToggledEventArgs e)
     {
-        bool isDarkMode = e.Value;
+        if (e.Value)
+        {
+            Application.Current.UserAppTheme = AppTheme.Dark;
+            Preferences.Set("IsDarkMode", true); 
+        }
+        else
+        {
+            Application.Current.UserAppTheme = AppTheme.Light;
+            Preferences.Set("IsDarkMode", false);
+        }
     }
 }

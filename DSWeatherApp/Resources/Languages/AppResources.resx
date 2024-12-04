@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Author</value>
+  </data>
   <data name="CurrentWeather" xml:space="preserve">
     <value>Current Weather</value>
   </data>
   <data name="CurrentWeatherDetails" xml:space="preserve">
     <value>Current Weather Details</value>
+  </data>
+  <data name="DailyForecastDetails" xml:space="preserve">
+    <value>Daily Forecast Details</value>
+  </data>
+  <data name="DailyForecastWeather" xml:space="preserve">
+    <value>Daily Forecast Weather</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
   </data>
   <data name="Entercityname" xml:space="preserve">
     <value>Enter City Name</value>
@@ -161,6 +176,12 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Settings</value>
+  </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
   </data>
   <data name="WindSpeed" xml:space="preserve">
     <value>Wind Speed</value>

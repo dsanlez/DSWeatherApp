@@ -1,12 +1,64 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.AboutPage"
-             Title="AboutPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+             Title="{x:Static local2:AppResources.About}">
+
+    <VerticalStackLayout Spacing="20" Padding="20" VerticalOptions="Center">
+        <Frame Padding="10" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10" HorizontalOptions="Center">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- Author -->
+                <Label Text="{x:Static local2:AppResources.Author}" 
+                   FontSize="18" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Start" />
+
+                <Label Text=": Diogo Sanlez" 
+                   FontSize="18" 
+                   Grid.Row="0" 
+                   Grid.Column="1"
+                   HorizontalOptions="Start" />
+
+                <!-- Date -->
+                <Label Text="{x:Static local2:AppResources.Date}" 
+                   FontSize="18" 
+                   Grid.Row="1" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Start" />
+
+                <Label Text=": 04/12/2024" 
+                   FontSize="18" 
+                   Grid.Row="1" 
+                   Grid.Column="1" 
+                   HorizontalOptions="Start" />
+
+                <!-- Version -->
+                <Label Text="{x:Static local2:AppResources.Version}" 
+                   FontSize="18" 
+                   Grid.Row="2" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Start" />
+
+                <Label Text=": 1.0.1" 
+                   FontSize="18" 
+                   Grid.Row="2" 
+                   Grid.Column="1" 
+                   HorizontalOptions="Start" />
+
+            </Grid>
+        </Frame>
     </VerticalStackLayout>
 </ContentPage>

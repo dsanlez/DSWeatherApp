@@ -33,7 +33,7 @@
                 </CollectionView.ItemTemplate>
             </CollectionView>
 
-            <Frame Padding="10" BackgroundColor="LightBlue" CornerRadius="10">
+            <Frame Padding="10" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10">
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding NavigateToDetailsCommand}" />
                 </Frame.GestureRecognizers>
@@ -82,11 +82,17 @@
             <CollectionView ItemsSource="{Binding HourlyForecast}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
+                        <Frame BorderColor="Blue" CornerRadius="5" Padding="10" Margin="5" HasShadow="True">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:WeatherPageViewModel}}, Path=NavigateToHourlyDetailsCommand}"
-                                          CommandParameter="{Binding .}" />
+                                           CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
+                            <Frame.BackgroundColor>
+                                <OnIdiom x:TypeArguments="Color">
+                                    <OnIdiom.Phone>DodgerBlue</OnIdiom.Phone>
+                                    <OnIdiom.Tablet>DodgerBlue</OnIdiom.Tablet>
+                                </OnIdiom>
+                            </Frame.BackgroundColor>
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="{Binding Hour}" FontSize="16" />
                                 <Image Source="{Binding Icon}" HeightRequest="40" WidthRequest="40" />

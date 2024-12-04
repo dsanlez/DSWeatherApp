@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:DSWeatherApp.Models"
              xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.ForecastPage"
-             Title="Daily Forecast Weather">
+             Title="{x:Static local2:AppResources.DailyForecastWeather}">
 
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="20">
@@ -38,12 +38,18 @@
             <CollectionView ItemsSource="{Binding DailyForecast}">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame BorderColor="LightGray" CornerRadius="5" Padding="10" Margin="5">
-                            <!-- Move GestureRecognizers to the Frame or HorizontalStackLayout -->
+                        <Frame BorderColor="Blue" CornerRadius="5" Padding="10" Margin="5" HasShadow="True">
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WeatherPageViewModel}}, Path=NavigateToDailyForecastDetailsCommand}"
+                                <TapGestureRecognizer 
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WeatherPageViewModel}}, Path=NavigateToDailyForecastDetailsCommand}" 
                                 CommandParameter="{Binding .}" />
                             </Frame.GestureRecognizers>
+                            <Frame.BackgroundColor>
+                                <OnIdiom x:TypeArguments="Color">
+                                    <OnIdiom.Phone>DodgerBlue</OnIdiom.Phone>
+                                    <OnIdiom.Tablet>DodgerBlue</OnIdiom.Tablet>
+                                </OnIdiom>
+                            </Frame.BackgroundColor>
                             <HorizontalStackLayout Spacing="10">
                                 <Label Text="{Binding Date}" FontSize="Medium" />
                                 <Label Text="{Binding Temperature}" FontSize="Large" />
@@ -53,7 +59,6 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

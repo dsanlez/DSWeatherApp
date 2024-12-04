@@ -117,11 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="About" xml:space="preserve">
+    <value>Sobre</value>
+  </data>
+  <data name="Author" xml:space="preserve">
+    <value>Autor</value>
+  </data>
   <data name="CurrentWeather" xml:space="preserve">
     <value>Temperatura atual</value>
   </data>
   <data name="CurrentWeatherDetails" xml:space="preserve">
     <value>Detalhes Temperatura atual</value>
+  </data>
+  <data name="DailyForecastDetails" xml:space="preserve">
+    <value>Detalhes previsão diária</value>
+  </data>
+  <data name="DailyForecastWeather" xml:space="preserve">
+    <value>Previsão diária</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Data</value>
   </data>
   <data name="Entercityname" xml:space="preserve">
     <value>Introduza o nome da cidade</value>
@@ -161,6 +176,9 @@
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Versão</value>
   </data>
   <data name="WindSpeed" xml:space="preserve">
     <value>Velocidade do vento</value>

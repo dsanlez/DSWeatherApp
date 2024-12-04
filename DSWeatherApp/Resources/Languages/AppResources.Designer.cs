@@ -61,6 +61,24 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to About.
+        /// </summary>
+        internal static string About {
+            get {
+                return ResourceManager.GetString("About", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        internal static string Author {
+            get {
+                return ResourceManager.GetString("Author", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Weather.
         /// </summary>
         internal static string CurrentWeather {
@@ -75,6 +93,33 @@ namespace DSWeatherApp.Resources.Languages {
         internal static string CurrentWeatherDetails {
             get {
                 return ResourceManager.GetString("CurrentWeatherDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Forecast Details.
+        /// </summary>
+        internal static string DailyForecastDetails {
+            get {
+                return ResourceManager.GetString("DailyForecastDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daily Forecast Weather.
+        /// </summary>
+        internal static string DailyForecastWeather {
+            get {
+                return ResourceManager.GetString("DailyForecastWeather", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
             }
         }
         
@@ -192,6 +237,24 @@ namespace DSWeatherApp.Resources.Languages {
         internal static string Settings {
             get {
                 return ResourceManager.GetString("Settings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Theme.
+        /// </summary>
+        internal static string Theme {
+            get {
+                return ResourceManager.GetString("Theme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version.
+        /// </summary>
+        internal static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
             }
         }
         
