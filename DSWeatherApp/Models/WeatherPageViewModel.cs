@@ -167,6 +167,9 @@ namespace DSWeatherApp.Models
             }
         }
 
+        private TranslationService _translationService;
+        private string _currentLanguage;
+
         public async Task SearchWeather(double latitude, double longitude)
         {
             if (latitude == 0 && longitude == 0)
@@ -223,7 +226,8 @@ namespace DSWeatherApp.Models
                                     : string.Empty,
                                 Main = item.Main,
                                 Wind = item.Wind,
-                                Rain = item.Rain
+                                Rain = item.Rain,
+                                CityName = SelectedCity.Name
                             });
                         }
                     });
@@ -246,7 +250,8 @@ namespace DSWeatherApp.Models
                             Icon = $"https://openweathermap.org/img/wn/{group.First().Weather.First().icon}.png",
                             Main = group.First().Main,
                             Wind = group.First().Wind,
-                            Rain = group.First().Rain
+                            Rain = group.First().Rain,
+                            CityName = SelectedCity.Name
                         })
                         .ToList();
 

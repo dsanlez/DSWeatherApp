@@ -1,5 +1,6 @@
 ﻿using DSWeatherApp.Models;
 using DSWeatherApp.Pages;
+using DSWeatherApp.Resources.Languages;
 
 
 namespace DSWeatherApp
@@ -26,11 +27,11 @@ namespace DSWeatherApp
             {
                 Items =
                 {
-                    new ShellContent {Title = "Home", Icon = "home", Content = homePage},
-                    new ShellContent {Title = "Current Weather", Icon = "cloudy", Content = currentPage},
-                    new ShellContent {Title = "Forecast Weather", Icon = "cloudy", Content = forecastPage},
-                    new ShellContent {Title = "Settings", Icon = "settings", Content = settingsPage},
-                    new ShellContent {Title = "About", Icon = "about", Content = aboutPage},
+                    new ShellContent {Title = AppResources.Home, Icon = "home", Content = homePage},
+                    new ShellContent {Title = AppResources.Current, Icon = "cloudy", Content = currentPage},
+                    new ShellContent {Title = AppResources.Forecast, Icon = "cloudy", Content = forecastPage},
+                    new ShellContent {Title = AppResources.Settings, Icon = "settings", Content = settingsPage},
+                    new ShellContent {Title = AppResources.About, Icon = "about", Content = aboutPage},
                 }
             });
         }

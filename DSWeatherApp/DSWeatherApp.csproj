@@ -61,6 +61,7 @@
 	  <None Remove="Resources\Images\cloudy.png" />
 	  <None Remove="Resources\Images\DsWeather.png" />
 	  <None Remove="Resources\Images\home.png" />
+	  <None Remove="Resources\Images\linkedin.png" />
 	  <None Remove="Resources\Images\settings.png" />
 	</ItemGroup>
 

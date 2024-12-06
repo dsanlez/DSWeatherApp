@@ -6,4 +6,10 @@ public partial class AboutPage : ContentPage
 	{
 		InitializeComponent();
 	}
+
+    private async void OnLinkedInClicked(object sender, EventArgs e)
+    {
+        var uri = new Uri("https://www.linkedin.com/in/diogo-sanlez-051915244/");
+        await Launcher.Default.OpenAsync(uri);
+    }
 }

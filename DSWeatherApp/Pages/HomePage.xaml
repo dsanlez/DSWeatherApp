@@ -4,44 +4,79 @@
              xmlns:viewModels="clr-namespace:DSWeatherApp.Models"
              xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
              x:Class="DSWeatherApp.Pages.HomePage"
-             Title="{x:Static local2:AppResources.HomePage}">
-    
-    <Frame Padding="10" BackgroundColor="LightBlue" CornerRadius="10">
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
+             Title="{x:Static local2:AppResources.Home}">
 
-            <!-- City Name -->
-            <Label Text="{Binding CurrentWeather.Name}" 
-            FontSize="16" 
-            Grid.Row="0" 
-            Grid.Column="1" />
+    <Grid>
+        <!-- Add rows for the welcome message and description -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <!-- This row will be for the weather container -->
+        </Grid.RowDefinitions>
 
-            <!-- Icon Image -->
-            <Image Source="{Binding CurrentWeather.Icon, StringFormat='https://openweathermap.org/img/wn/{0}.png'}" 
-        HeightRequest="100" 
-        WidthRequest="100" 
-        Grid.RowSpan="2" />
+        <!-- Welcome message -->
+        <Label Text="{x:Static local2:AppResources.WelcometotheDSWeatherApp}" 
+           FontSize="24" 
+           HorizontalOptions="Center" 
+           Grid.Row="0"
+           Margin="0,10"/>
 
-            <!-- Temperature -->
-            <Label Text="{Binding CurrentWeather.Temperature, StringFormat='{0:0}°C'}" 
-            FontSize="24" 
-            Grid.Row="1" 
-            Grid.Column="1" />
+        <!-- Weather description -->
+        <Label Text="{x:Static local2:AppResources.Currentweatherforyourlocation}" 
+           FontSize="18" 
+           HorizontalOptions="Center" 
+           Grid.Row="1"
+           Margin="0,50,0,-50"/>
 
-            <!-- Weather Description -->
-            <Label Text="{Binding CurrentWeather.Weather[0].Description}" 
-    FontSize="24" 
-    Grid.Row="3" 
-    Grid.Column="1" />
-        </Grid>
-    </Frame>
+        <!-- Weather Info Container -->
+        <Frame Padding="40" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10"
+           VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"
+           WidthRequest="300" HeightRequest="300" Grid.Row="2">
+            <Frame.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding NavigateToDetailsCommand}" />
+            </Frame.GestureRecognizers>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!-- City Name -->
+                <Label Text="{Binding CurrentWeather.Name}" 
+                   FontSize="24" 
+                   Grid.Row="0" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Center" />
+
+                <!-- Icon Image -->
+                <Image Source="{Binding CurrentWeather.Icon, StringFormat='https://openweathermap.org/img/wn/{0}.png'}" 
+                   HeightRequest="100" 
+                   WidthRequest="100" 
+                   Grid.Row="1" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Center" />
+
+                <!-- Temperature -->
+                <Label Text="{Binding CurrentWeather.Temperature, StringFormat='{0:0}°C'}" 
+                   FontSize="24" 
+                   Grid.Row="2" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Center" />
+
+                <!-- Weather Description -->
+                <Label Text="{Binding CurrentWeather.Weather[0].Description}" 
+                   FontSize="24" 
+                   Grid.Row="3" 
+                   Grid.Column="0" 
+                   HorizontalOptions="Center"
+                   Margin="15"/>
+            </Grid>
+        </Frame>
+    </Grid>
 </ContentPage>

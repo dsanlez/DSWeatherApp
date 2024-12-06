@@ -51,8 +51,11 @@
                                 </OnIdiom>
                             </Frame.BackgroundColor>
                             <HorizontalStackLayout Spacing="10">
+                                <!-- Date -->
                                 <Label Text="{Binding Date}" FontSize="Medium" />
+                                <!-- Temperature -->
                                 <Label Text="{Binding Temperature}" FontSize="Large" />
+                                <!-- Icon Image -->
                                 <Image Source="{Binding Icon}" WidthRequest="50" HeightRequest="50" />
                             </HorizontalStackLayout>
                         </Frame>

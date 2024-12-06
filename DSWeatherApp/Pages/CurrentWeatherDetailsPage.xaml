@@ -7,7 +7,10 @@
 
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-            <Frame BackgroundColor="LightBlue" CornerRadius="10">
+            <Frame Padding="10" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDetailsCommand}" />
+                </Frame.GestureRecognizers>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -16,54 +19,60 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
+                    <!-- City Name -->
                     <Label Text="{Binding CurrentWeather.CityName}" 
-                        FontSize="24" 
-                        HorizontalOptions="Center"
-                        Grid.Row="0"/>
+               FontSize="24" 
+               HorizontalOptions="Center"
+               Grid.Row="0"/>
 
+                    <!-- Icon Image -->
                     <Image Source="{Binding CurrentWeather.Icon, StringFormat='https://openweathermap.org/img/wn/{0}@4x.png'}" 
-                        HeightRequest="200" 
-                        WidthRequest="200"
-                        Grid.Row="1"
-                        HorizontalOptions="Center"/>
+               HeightRequest="200" 
+               WidthRequest="200"
+               Grid.Row="1"
+               HorizontalOptions="Center"/>
 
+                    <!-- Temperature -->
                     <Label Text="{Binding CurrentWeather.Temperature, StringFormat='{0:0}°C'}" 
-                        FontSize="36" 
-                        HorizontalOptions="Center"
-                        Grid.Row="2"/>
+               FontSize="30" 
+               HorizontalOptions="Center"
+               Grid.Row="2"/>
 
-                    <Label Text="{Binding CurrentWeather.Weather[0].Description}" 
-                      FontSize="24" 
-                      Grid.Row="3" 
-                      />  
                 </Grid>
             </Frame>
-         
-            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto">
-                <Label Text="{x:Static local2:AppResources.MinTemperature}" Grid.Row="0" Grid.Column="0"/>
+
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto"
+                   RowSpacing="15">
+                <Label Text="{x:Static local2:AppResources.MinTemperature}" Grid.Row="0" Grid.Column="0" FontSize="15"/>
                 <Label Text="{Binding CurrentWeather.Main.TempMin, StringFormat='{0:0}°C'}" 
                     Grid.Row="0" 
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    FontSize="15" />
 
-                <Label Text="{x:Static local2:AppResources.MaxTemperature}" Grid.Row="1" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.MaxTemperature}" Grid.Row="1" Grid.Column="0" FontSize="15"/>
                 <Label Text="{Binding CurrentWeather.Main.TempMax, StringFormat='{0:0}°C'}" 
                     Grid.Row="1" 
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    FontSize="15"/>
 
-                <Label Text="{x:Static local2:AppResources.Humidity}" Grid.Row="2" Grid.Column="0"/>
+
+                <Label Text="{x:Static local2:AppResources.Humidity}" Grid.Row="2" Grid.Column="0" FontSize="15"/>
                 <Label Text="{Binding CurrentWeather.Main.Humidity, StringFormat='{0}%'}" 
                     Grid.Row="2" 
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    FontSize="15"/>
 
-                <Label Text="{x:Static local2:AppResources.WindSpeed}" Grid.Row="3" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.WindSpeed}" Grid.Row="3" Grid.Column="0" FontSize="15"/>
                 <Label Text="{Binding CurrentWeather.wind.speed, StringFormat='{0} m/s'}" 
                     Grid.Row="3" 
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    FontSize="15"/>
 
-                <Label Text="{x:Static local2:AppResources.Rain}" Grid.Row="4" Grid.Column="0"/>
+                <Label Text="{x:Static local2:AppResources.Rain}" Grid.Row="4" Grid.Column="0" FontSize="15"/>
                 <Label Text="{Binding CurrentWeather.rain?._1h, StringFormat='{0:0.##} mm', FallbackValue={x:Static local2:AppResources.NoRainFallback}}" 
                     Grid.Row="4" 
-                    Grid.Column="1"/>
+                    Grid.Column="1"
+                    FontSize="15"/>
             </Grid>
         </VerticalStackLayout>
     </ScrollView>

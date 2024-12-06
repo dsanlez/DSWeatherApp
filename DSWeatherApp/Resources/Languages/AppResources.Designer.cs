@@ -79,6 +79,15 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current.
+        /// </summary>
+        internal static string Current {
+            get {
+                return ResourceManager.GetString("Current", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Current Weather.
         /// </summary>
         internal static string CurrentWeather {
@@ -93,6 +102,15 @@ namespace DSWeatherApp.Resources.Languages {
         internal static string CurrentWeatherDetails {
             get {
                 return ResourceManager.GetString("CurrentWeatherDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string Currentweatherforyourlocation {
+            get {
+                return ResourceManager.GetString("Currentweatherforyourlocation", resourceCulture);
             }
         }
         
@@ -124,6 +142,15 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Don&apos;t have an account?.
+        /// </summary>
+        internal static string Donthaveanaccount {
+            get {
+                return ResourceManager.GetString("Donthaveanaccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enter City Name.
         /// </summary>
         internal static string Entercityname {
@@ -133,11 +160,20 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forecast.
+        /// </summary>
+        internal static string Forecast {
+            get {
+                return ResourceManager.GetString("Forecast", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Home Page.
         /// </summary>
-        internal static string HomePage {
+        internal static string Home {
             get {
-                return ResourceManager.GetString("HomePage", resourceCulture);
+                return ResourceManager.GetString("Home", resourceCulture);
             }
         }
         
@@ -223,6 +259,15 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Register here.
+        /// </summary>
+        internal static string Registerhere {
+            get {
+                return ResourceManager.GetString("Registerhere", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select Language.
         /// </summary>
         internal static string SelectLanguage {
@@ -241,6 +286,15 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Current weather for your location.
+        /// </summary>
+        internal static string String1 {
+            get {
+                return ResourceManager.GetString("String1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Theme.
         /// </summary>
         internal static string Theme {
@@ -255,6 +309,15 @@ namespace DSWeatherApp.Resources.Languages {
         internal static string Version {
             get {
                 return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Welcome to the DS Weather!.
+        /// </summary>
+        internal static string WelcometotheDSWeatherApp {
+            get {
+                return ResourceManager.GetString("WelcometotheDSWeatherApp", resourceCulture);
             }
         }
         

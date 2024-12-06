@@ -123,11 +123,17 @@
   <data name="Author" xml:space="preserve">
     <value>Autor</value>
   </data>
+  <data name="Current" xml:space="preserve">
+    <value>Atual</value>
+  </data>
   <data name="CurrentWeather" xml:space="preserve">
     <value>Temperatura atual</value>
   </data>
   <data name="CurrentWeatherDetails" xml:space="preserve">
     <value>Detalhes Temperatura atual</value>
+  </data>
+  <data name="Currentweatherforyourlocation" xml:space="preserve">
+    <value>Temperatura atual na sua localização</value>
   </data>
   <data name="DailyForecastDetails" xml:space="preserve">
     <value>Detalhes previsão diária</value>
@@ -138,10 +144,16 @@
   <data name="Date" xml:space="preserve">
     <value>Data</value>
   </data>
+  <data name="Donthaveanaccount" xml:space="preserve">
+    <value>Não tem uma conta?</value>
+  </data>
   <data name="Entercityname" xml:space="preserve">
     <value>Introduza o nome da cidade</value>
   </data>
-  <data name="HomePage" xml:space="preserve">
+  <data name="Forecast" xml:space="preserve">
+    <value>Diária</value>
+  </data>
+  <data name="Home" xml:space="preserve">
     <value>Página inicial</value>
   </data>
   <data name="HourlyForecast" xml:space="preserve">
@@ -171,14 +183,23 @@
   <data name="Rain" xml:space="preserve">
     <value>Chuva</value>
   </data>
+  <data name="Registerhere" xml:space="preserve">
+    <value>Registe-se aqui</value>
+  </data>
   <data name="SelectLanguage" xml:space="preserve">
     <value>Selecione o idioma</value>
   </data>
   <data name="Settings" xml:space="preserve">
     <value>Configurações</value>
   </data>
+  <data name="Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>Versão</value>
+  </data>
+  <data name="WelcometotheDSWeatherApp" xml:space="preserve">
+    <value>Bem-Vindo à DS Weather!</value>
   </data>
   <data name="WindSpeed" xml:space="preserve">
     <value>Velocidade do vento</value>

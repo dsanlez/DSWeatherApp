@@ -27,5 +27,7 @@ namespace DSWeatherApp.Models
 
         [JsonProperty("rain")]
         public Rain? Rain { get; set; }
+
+        public string? CityName { get; set; }
     }
 }

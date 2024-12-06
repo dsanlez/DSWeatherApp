@@ -5,11 +5,11 @@
              Title="{x:Static local2:AppResources.HourlyForecastDetails}">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-            <ActivityIndicator IsRunning="{Binding IsLoading}" 
-                    IsVisible="{Binding IsLoading}" 
-                    VerticalOptions="CenterAndExpand"
-                    HorizontalOptions="CenterAndExpand" />
-            <Frame BackgroundColor="LightBlue" CornerRadius="10">
+          
+            <Frame Padding="10" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDetailsCommand}" />
+                </Frame.GestureRecognizers>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -18,53 +18,65 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
-                   
-                    <Label Text="{Binding DtTxt}" 
-                           FontSize="24" 
-                           HorizontalOptions="Center"/>
-                    <Label Text="{Binding Hour}" 
-                           FontSize="24" 
-                           HorizontalOptions="Center"/>
 
+                    <Label Text="{Binding CityName}" 
+                    FontSize="24" 
+                    HorizontalOptions="Center"
+                    Grid.Row="0"/>
+
+                    <!-- Hour -->
+                    <Label Text="{Binding Hour}" 
+               FontSize="24" 
+               HorizontalOptions="Center"
+               Grid.Row="1"/>
+
+                    <!-- Weather Icon -->
                     <Image Source="{Binding Icon}" 
-                           HeightRequest="200" 
-                           WidthRequest="200"
-                           Grid.Row="1"/>
-                  
+               HeightRequest="200" 
+               WidthRequest="200"
+               Grid.Row="2"
+               HorizontalOptions="Center"/>
+
+                    <!-- Temperature -->
                     <Label Text="{Binding Temperature}" 
-                           FontSize="36" 
-                           HorizontalOptions="Center"
-                           Grid.Row="2"/>
+               FontSize="36" 
+               HorizontalOptions="Center"
+               Grid.Row="3"/>
                 </Grid>
             </Frame>
 
-            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
-
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="15">
+                <!-- Min Temperature -->
                 <Label Text="{x:Static local2:AppResources.MinTemperature}" Grid.Row="1" Grid.Column="0"/>
                 <Label Text="{Binding Main.TempMin, StringFormat='{0:0}°C'}" 
                        Grid.Row="1" 
                        Grid.Column="1"/>
-
+                <!-- Max Temperature -->
                 <Label Text="{x:Static local2:AppResources.MaxTemperature}" Grid.Row="2" Grid.Column="0"/>
                 <Label Text="{Binding Main.TempMax, StringFormat='{0:0}°C'}" 
                        Grid.Row="2" 
                        Grid.Column="1"/>
-
+                <!-- Humidity -->
                 <Label Text="{x:Static local2:AppResources.Humidity}" Grid.Row="3" Grid.Column="0"/>
                 <Label Text="{Binding Main.Humidity, StringFormat='{0}%'}" 
                        Grid.Row="3" 
                        Grid.Column="1"/>
-
+                <!-- Wind Speed -->
                 <Label Text="{x:Static local2:AppResources.WindSpeed}" Grid.Row="4" Grid.Column="0"/>
                 <Label Text="{Binding Wind.speed, StringFormat='{0} m/s'}" 
                        Grid.Row="4" 
                        Grid.Column="1"/>
-
+                <!-- Rain -->
                 <Label Text="{x:Static local2:AppResources.Rain}" Grid.Row="5" Grid.Column="0"/>
                 <Label Text="{Binding Rain.rain?._1h, StringFormat='{0:0.##} mm', FallbackValue={x:Static local2:AppResources.NoRainFallback}}"
                        Grid.Row="5" 
                        Grid.Column="1"/>
             </Grid>
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+          IsVisible="{Binding IsLoading}" 
+          VerticalOptions="CenterAndExpand"
+          HorizontalOptions="CenterAndExpand" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

@@ -3,49 +3,53 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="DSWeatherApp.Pages.ForecastDetailsPage"
              xmlns:local2="clr-namespace:DSWeatherApp.Resources.Languages"
-             Title="{x:Static local2:AppResources.CurrentWeatherDetails}">
+             Title="{x:Static local2:AppResources.DailyForecastDetails}">
     <ScrollView>
         <VerticalStackLayout Spacing="20" Padding="20">
-            <!-- ActivityIndicator to show loading state -->
-            <ActivityIndicator IsRunning="{Binding IsLoading}" 
-                           IsVisible="{Binding IsLoading}" 
-                           VerticalOptions="CenterAndExpand"
-                           HorizontalOptions="CenterAndExpand" />
+           
 
             <!-- Frame containing detailed daily forecast info -->
-            <Frame BackgroundColor="LightBlue" CornerRadius="10">
+            <Frame Padding="10" BorderColor="Blue" BackgroundColor="DodgerBlue" CornerRadius="10">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding NavigateToDetailsCommand}" />
+                </Frame.GestureRecognizers>
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
+
+                    <Label Text="{Binding CityName}" 
+                    FontSize="24" 
+                    HorizontalOptions="Center"
+                    Grid.Row="0"/>  
 
                     <!-- Date -->
                     <Label Text="{Binding Date}" 
-                       FontSize="Medium" 
-                       HorizontalOptions="Center"
-                       Grid.Row="0"/>
+               FontSize="24" 
+               HorizontalOptions="Center"
+               Grid.Row="1"/>
 
                     <!-- Weather Icon -->
                     <Image Source="{Binding Icon}" 
-                     WidthRequest="50" 
-                     HeightRequest="50"
-                     HorizontalOptions="Center"
-                     Grid.Row="1"/>
+               WidthRequest="200" 
+               HeightRequest="200"
+               HorizontalOptions="Center"
+               Grid.Row="2"/>
 
                     <!-- Temperature -->
                     <Label Text="{Binding Temperature}" 
-                       FontSize="Large" 
-                       HorizontalOptions="Center"
-                       Grid.Row="2"/>
-
-                  
+               FontSize="36" 
+               HorizontalOptions="Center"
+               Grid.Row="3"/>
                 </Grid>
             </Frame>
 
             <!-- Detailed Weather Info Grid -->
-            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto">
+            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="15">
                 <!-- Min Temperature -->
                 <Label Text="{x:Static local2:AppResources.MinTemperature}" 
                    Grid.Row="1" 
@@ -87,6 +91,11 @@
                    Grid.Row="5" 
                    Grid.Column="1"/>
             </Grid>
+            <!-- ActivityIndicator to show loading state -->
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
+                IsVisible="{Binding IsLoading}" 
+                VerticalOptions="CenterAndExpand"
+                HorizontalOptions="CenterAndExpand" />
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

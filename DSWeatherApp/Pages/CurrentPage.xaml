@@ -94,8 +94,11 @@
                                 </OnIdiom>
                             </Frame.BackgroundColor>
                             <HorizontalStackLayout Spacing="10">
+                                <!-- Hour -->
                                 <Label Text="{Binding Hour}" FontSize="16" />
+                                <!-- Icon Image -->
                                 <Image Source="{Binding Icon}" HeightRequest="40" WidthRequest="40" />
+                                <!-- Temperature -->
                                 <Label Text="{Binding Temperature}" FontSize="16" />
                             </HorizontalStackLayout>
                         </Frame>
