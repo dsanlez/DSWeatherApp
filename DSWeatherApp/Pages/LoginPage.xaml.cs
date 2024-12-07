@@ -62,7 +62,7 @@ public partial class LoginPage : ContentPage
                     Preferences.Set("AuthToken", token);
 
 
-                    await Navigation.PushAsync(new HomePage());
+                    Application.Current.MainPage = new AppShell();
                 }
                 else
                 {

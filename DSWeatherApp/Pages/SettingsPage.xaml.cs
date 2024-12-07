@@ -34,7 +34,7 @@ public partial class SettingsPage : ContentPage
         CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
         CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
         MessagingCenter.Send(this, "LanguageChanged");
-        App.Current.MainPage = new NavigationPage(new SettingsPage());
+        App.Current.MainPage = new AppShell();
     }
 
     private void ThemeSwitch_Toggled(object sender, ToggledEventArgs e)

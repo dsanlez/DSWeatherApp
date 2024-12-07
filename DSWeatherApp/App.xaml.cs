@@ -11,8 +11,8 @@ namespace DSWeatherApp
             InitializeComponent();
             var language = Preferences.Get("AppLanguage", "en-US");
             ChangeLanguage(language);
-            MainPage = new AppShell();
             MainPage = new NavigationPage(new LoginPage());
+            //MainPage = new AppShell();
         }
 
         public void ChangeLanguage(string language)

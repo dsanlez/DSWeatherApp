@@ -139,6 +139,11 @@ namespace DSWeatherApp.Models
             });
         }
 
+        /// <summary>
+        /// Searches for cities based on the provided query and updates the Cities collection.
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         private async Task SearchCitiesAsync(string query)
         {
             if (string.IsNullOrWhiteSpace(query))
@@ -167,9 +172,12 @@ namespace DSWeatherApp.Models
             }
         }
 
-        private TranslationService _translationService;
-        private string _currentLanguage;
-
+        /// <summary>
+        /// /// Retrieves current, hourly, and daily weather data for a given geographical location.
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        /// <returns></returns>
         public async Task SearchWeather(double latitude, double longitude)
         {
             if (latitude == 0 && longitude == 0)
@@ -287,6 +295,10 @@ namespace DSWeatherApp.Models
             return true;
         }
 
+        /// <summary>
+        /// Retrieves the current geographical location of the device and uses it to search for weather information.
+        /// </summary>
+        /// <returns></returns>
         public async Task GetLocation()
         {
             try

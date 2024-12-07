@@ -6,12 +6,12 @@
     
     <Grid RowDefinitions="Auto,Auto,Auto,Auto,*"
       RowSpacing="20"
-      Margin="20,150,20,40">
+      Margin="20,100,20,40">
         <Image Grid.Row="0"
            Source="dsweather.png"
            Aspect="AspectFit"
-           HeightRequest="100"
-           WidthRequest="100"/>
+           HeightRequest="200"
+           WidthRequest="200"/>
         <Frame Grid.Row="2"
            Padding="15"
            BackgroundColor="White">
@@ -34,7 +34,7 @@
                         Spacing="2" HorizontalOptions="Center"
                         VerticalOptions="EndAndExpand">
             <Label Text="{x:Static local:AppResources.Donthaveanaccount}"/>
-            <Label Text="Register here" TextColor="#2196F3" FontAttributes="Bold">
+            <Label Text="{x:Static local:AppResources.Registerhere}" TextColor="#2196F3" FontAttributes="Bold">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer x:Name="TapRegister" Tapped="TapRegister_Tapped"/>
                 </Label.GestureRecognizers>

@@ -106,7 +106,7 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to .
+        ///   Looks up a localized string similar to Current weather on your location.
         /// </summary>
         internal static string Currentweatherforyourlocation {
             get {
@@ -169,7 +169,7 @@ namespace DSWeatherApp.Resources.Languages {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Home Page.
+        ///   Looks up a localized string similar to Home.
         /// </summary>
         internal static string Home {
             get {

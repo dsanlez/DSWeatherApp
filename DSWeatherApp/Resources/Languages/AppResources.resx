@@ -133,7 +133,7 @@
     <value>Current Weather Details</value>
   </data>
   <data name="Currentweatherforyourlocation" xml:space="preserve">
-    <value />
+    <value>Current weather on your location</value>
   </data>
   <data name="DailyForecastDetails" xml:space="preserve">
     <value>Daily Forecast Details</value>
@@ -154,7 +154,7 @@
     <value>Forecast</value>
   </data>
   <data name="Home" xml:space="preserve">
-    <value>Home Page</value>
+    <value>Home</value>
   </data>
   <data name="HourlyForecast" xml:space="preserve">
     <value>Hourly Forecast</value>
