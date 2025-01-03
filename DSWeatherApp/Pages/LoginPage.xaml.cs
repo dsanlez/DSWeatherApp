@@ -16,7 +16,7 @@ public partial class LoginPage : ContentPage
 
     private async void TapRegister_Tapped(object sender, TappedEventArgs e)
     {
-        var url = "https://4k33qgqk-44351.uks1.devtunnels.ms";
+        var url = "API ADRESS";
         
         await Launcher.OpenAsync(url);
     }
