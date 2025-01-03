@@ -12,7 +12,7 @@ namespace DSWeatherApp.Models
     public class WeatherPageViewModel : INotifyPropertyChanged
     {
 
-        private readonly string _apiKey = "5dd97a2dfb0b92a3fc8562f67935bea0";
+        private readonly string _apiKey = "APIKEY";
         private readonly HttpClient _httpClient;
         private readonly string _baseApiUrl = "https://api.openweathermap.org";
 
